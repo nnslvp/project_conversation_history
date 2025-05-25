@@ -11,10 +11,10 @@ Rails.application.routes.draw do
   # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
 
   # Require authentication for all routes
-  # authenticate :user do
+  authenticate :user do
     # Defines the root path route ("/")
     root "projects#index"
 
     resources :projects
-  # end
+  end
 end
