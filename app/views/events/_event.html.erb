@@ -1,0 +1,28 @@
+<div class="bg-white shadow rounded-lg p-6 mb-4">
+  <div class="flex items-center mb-4">
+    <div class="flex-1">
+      <div class="text-sm text-gray-600">
+        <%= event.user.email %> • <%= time_ago_in_words(event.created_at) %> ago
+      </div>
+    </div>
+  </div>
+
+  <% if event.status_change? && event.from_status != event.to_status %>
+    <div class="mb-4">
+      <div class="text-sm text-gray-600">Status changed</div>
+      <div class="flex items-center space-x-2">
+        <% if event.from_status.present? %>
+          <span class="px-2 py-1 text-xs rounded bg-gray-200"><%= event.from_status.titleize %></span>
+          <span class="text-gray-500">→</span>
+        <% end %>
+        <span class="px-2 py-1 text-xs rounded bg-blue-200"><%= event.to_status.titleize %></span>
+      </div>
+    </div>
+  <% end %>
+
+  <% if event.content.present? %>
+    <div class="text-gray-800">
+      <%= simple_format(event.content) %>
+    </div>
+  <% end %>
+</div> 

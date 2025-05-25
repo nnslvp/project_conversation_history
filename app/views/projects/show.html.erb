@@ -1,15 +1,30 @@
 <% content_for :title, "Showing project" %>
 
-<div class="md:w-2/3 w-full">
-  <% if notice.present? %>
-    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-md inline-block" id="notice"><%= notice %></p>
-  <% end %>
+<div class="max-w-7xl mx-auto">
+  <div class="mb-8">
+    <div class="flex justify-between items-start">
+      <div>
+        <h1 class="text-3xl font-bold mb-4"><%= @project.title %></h1>
+        <div class="text-gray-600 mb-4"><%= @project.description %></div>
+        <div class="flex items-center space-x-2">
+          <span class="text-sm text-gray-600">Status:</span>
+          <span class="px-2 py-1 text-xs rounded bg-blue-200"><%= @project.status.titleize %></span>
+        </div>
+      </div>
+      <div class="flex gap-2">
+        <%= link_to "Edit project", edit_project_path(@project), class: "rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-gray-50 font-medium" %>
+        <%= link_to "Back to projects", projects_path, class: "rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-gray-50 font-medium" %>
+        <%= button_to "Delete project", @project, method: :delete, class: "rounded-md px-3.5 py-2.5 text-white bg-red-600 hover:bg-red-500 font-medium cursor-pointer", data: { turbo_confirm: "Are you sure?" } %>
+      </div>
+    </div>
+  </div>
 
-  <h1 class="font-bold text-4xl">Showing project</h1>
+  <div class="mb-8">
+    <%= render 'events/form' %>
+  </div>
 
-  <%= render @project %>
-
-  <%= link_to "Edit this project", edit_project_path(@project), class: "w-full sm:w-auto text-center rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-gray-50 inline-block font-medium" %>
-  <%= link_to "Back to projects", projects_path, class: "w-full sm:w-auto text-center mt-2 sm:mt-0 sm:ml-2 rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-gray-50 inline-block font-medium" %>
-  <%= button_to "Destroy this project", @project, method: :delete, form_class: "sm:inline-block mt-2 sm:mt-0 sm:ml-2", class: "w-full rounded-md px-3.5 py-2.5 text-white bg-red-600 hover:bg-red-500 font-medium cursor-pointer", data: { turbo_confirm: "Are you sure?" } %>
+  <div class="space-y-4">
+    <h2 class="text-xl font-bold mb-4">Activity Feed</h2>
+    <%= render @events %>
+  </div>
 </div>

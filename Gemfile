@@ -65,3 +65,7 @@ group :test do
 end
 
 gem "devise", "~> 4.9"
+
+gem "byebug", "~> 12.0"
+
+gem "rubocop", "~> 1.75"

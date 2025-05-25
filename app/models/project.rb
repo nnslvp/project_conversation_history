@@ -6,4 +6,9 @@ class Project < ApplicationRecord
     completed: 2,
     archived: 3
   }
+  has_many :events
+
+  validates :title, presence: true
+  validates :description, presence: true
+  validates :status, presence: true
 end
