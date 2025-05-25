@@ -3,12 +3,13 @@ class ProjectsController < ApplicationController
 
   # GET /projects or /projects.json
   def index
-    @projects = Project.all
+    @projects = Project.order(created_at: :desc).page(params[:page]).per(12)
   end
 
   # GET /projects/1 or /projects/1.json
   def show
-    @events = @project.events.includes(:user).ordered
+    @project = Project.find(params[:id])
+    @events = @project.events.includes(:user).order(created_at: :desc).page(params[:page]).per(10)
   end
 
   # GET /projects/new
