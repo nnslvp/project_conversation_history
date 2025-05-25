@@ -1,24 +1,16 @@
-# README
+# Project Conversation History
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Simple Rails app for tracking project status changes and conversations.
 
-Things you may want to cover:
+## Setup
 
-* Ruby version
+Ruby 3.4.4
+SQLite database
 
-* System dependencies
+```bash
+bundle install
+rails db:create db:migrate
+./bin/dev
+```
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Visit `http://localhost:3000`

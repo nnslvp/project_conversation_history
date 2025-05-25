@@ -1,7 +1,13 @@
 <%= form_with(model: [@project, Event.new], class: "bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-full") do |f| %>
   <div class="mb-4">
     <%= f.label :content, "Comment", class: "block text-gray-700 text-sm font-bold mb-2" %>
-    <%= f.text_area :content, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline", rows: 3, placeholder: "Add a comment..." %>
+    <%= f.text_area :content, 
+        class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline #{'border-red-500' if @event&.errors&.include?(:content)}", 
+        rows: 3, 
+        placeholder: "Add a comment..." %>
+    <% if @event&.errors&.include?(:content) %>
+      <p class="text-red-500 text-xs italic mt-1"><%= @event.errors[:content].join(", ") %></p>
+    <% end %>
   </div>
 
   <div class="mb-4">
@@ -12,8 +18,11 @@
           nil
         ),
         { include_blank: 'Keep current status' },
-        class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline #{'border-red-500' if @event&.errors&.include?(:to_status)}"
     %>
+    <% if @event&.errors&.include?(:to_status) %>
+      <p class="text-red-500 text-xs italic mt-1"><%= @event.errors[:to_status].join(", ") %></p>
+    <% end %>
   </div>
 
   <div class="flex items-center justify-end">

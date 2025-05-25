@@ -6,7 +6,7 @@ class Project < ApplicationRecord
     completed: 2,
     archived: 3
   }
-  has_many :events
+  has_many :events, dependent: :destroy
 
   validates :title, presence: true
   validates :description, presence: true

@@ -39,6 +39,24 @@
     <% end %>
 
     <main class="max-w-7xl mx-auto mt-28 px-5">
+      <% if notice %>
+        <div class="notice" data-controller="flash" data-flash-target="message">
+          <div class="notice-content">
+            <span><%= notice %></span>
+            <button class="close-button" data-action="click->flash#close">&times;</button>
+          </div>
+        </div>
+      <% end %>
+
+      <% if alert %>
+        <div class="alert" data-controller="flash" data-flash-target="message">
+          <div class="alert-content">
+            <span><%= alert %></span>
+            <button class="close-button" data-action="click->flash#close">&times;</button>
+          </div>
+        </div>
+      <% end %>
+
       <%= yield %>
     </main>
   </body>
