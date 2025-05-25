@@ -14,4 +14,9 @@ rails db:seed
 ./bin/dev
 ```
 
-Visit `http://localhost:3000`
+## Using
+
+1. Visit `http://localhost:3000`
+2. Default user credentials (from seed):
+   - Email: `user@example.com`
+   - Password: `password123`
