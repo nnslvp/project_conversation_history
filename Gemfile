@@ -59,11 +59,11 @@ group :development do
   gem "web-console"
 end
 
-# group :test do
-#   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
-#   gem "capybara"
-#   gem "selenium-webdriver"
-# end
+group :test do
+  # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
+  gem "capybara"
+  gem "selenium-webdriver"
+end
 
 gem "devise", "~> 4.9"
 gem "will_paginate", "~> 4.0"
